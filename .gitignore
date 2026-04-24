@@ -27,7 +27,7 @@ coverage/
 .env.test.local
 .env.production.local
 .env*
-!.env.example
+!.example
 
 # OS and Editor
 .DS_Store

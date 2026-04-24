@@ -257,9 +257,13 @@ export default function App() {
       mediaRecorder.current.start();
       setIsRecording(true);
       setState('recording');
-    } catch (err) {
+    } catch (err: any) {
       console.error("Microphone access denied", err);
-      setError("Could not access microphone. Please check permissions.");
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+         setError("Microphone API not supported. Please ensure you are using HTTPS or localhost.");
+      } else {
+         setError("Could not access microphone. Please check permissions.");
+      }
     }
   };
 
